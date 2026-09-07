@@ -1,0 +1,165 @@
+/* ============================================================
+   Yetrabett — shared site styles
+   Used by index.html and every page under /blogs/.
+   Page-specific styles (hero, simulation, diagrams, etc.) live
+   inline in each page, not here.
+   ============================================================ */
+
+@font-face { font-family:'Plex Sans'; src:url('../fonts/IBMPlexSans-Light.ttf'); font-weight:300; }
+@font-face { font-family:'Plex Sans'; src:url('../fonts/IBMPlexSans-Regular.ttf'); font-weight:400; }
+@font-face { font-family:'Plex Sans'; src:url('../fonts/IBMPlexSans-Medium.ttf'); font-weight:500; }
+@font-face { font-family:'Plex Sans'; src:url('../fonts/IBMPlexSans-SemiBold.ttf'); font-weight:600; }
+@font-face { font-family:'Plex Sans'; src:url('../fonts/IBMPlexSans-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'Plex Mono'; src:url('../fonts/IBMPlexMono-Regular.ttf'); font-weight:400; }
+@font-face { font-family:'Plex Mono'; src:url('../fonts/IBMPlexMono-Medium.ttf'); font-weight:500; }
+@font-face { font-family:'Plex Mono'; src:url('../fonts/IBMPlexMono-SemiBold.ttf'); font-weight:600; }
+
+:root{
+  --ink:#1B1E22;
+  --ink-soft:#4B535B;
+  --paper:#FAFAF8;
+  --paper-2:#F0EEE7;
+  --line:#D8D6CE;
+  --blue:#2D5C6E;
+  --blue-tint:#EAF0F1;
+  --copper:#A8672B;
+}
+
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+html,body{ overflow-x:hidden; max-width:100%; }
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Plex Sans', sans-serif;
+  font-size:16px;
+  line-height:1.62;
+}
+img,svg{ max-width:100%; display:block; }
+a{ color:var(--blue); }
+p{ margin:0 0 12px; color:var(--ink); }
+.dim{ color:var(--ink-soft); }
+.mono{ font-family:'Plex Mono', monospace; }
+.wrap{
+  max-width:1180px;
+  margin:0 auto;
+  padding:0 32px;
+}
+@media (max-width:700px){ .wrap{ padding:0 20px; } }
+
+/* ---------- Nav ---------- */
+.nav{
+  border-bottom:1px solid var(--line);
+  position:sticky; top:0;
+  background:rgba(250,250,248,0.94);
+  backdrop-filter:blur(4px);
+  z-index:10;
+}
+.nav .wrap{ display:flex; align-items:center; justify-content:space-between; height:64px; }
+.nav .word{ font-weight:700; font-size:18px; letter-spacing:-0.01em; text-decoration:none; color:var(--ink); }
+.nav .links{ display:flex; }
+.nav .links a{
+  font-size:14.5px;
+  color:var(--ink-soft);
+  text-decoration:none;
+  margin-left:30px;
+  position:relative;
+  padding-bottom:5px;
+}
+.nav .links a::after{
+  content:"";
+  position:absolute; left:0; bottom:0;
+  width:0; height:2px;
+  background:var(--blue);
+  transition:width 0.25s ease;
+}
+.nav .links a:hover{ color:var(--ink); }
+.nav .links a:hover::after{ width:100%; }
+@media (max-width:760px){ .nav .links{ display:none; } }
+
+/* ---------- Section headings (no eyebrow labels) ---------- */
+.section-head{
+  border-left:3px solid var(--blue);
+  padding-left:16px;
+  margin-bottom:22px;
+}
+.section-head h2{ font-size:26px; font-weight:600; margin:0 0 6px; letter-spacing:-0.01em; }
+.section-head .note{ color:var(--ink-soft); font-size:14.5px; }
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-block;
+  font-size:14px;
+  font-weight:500;
+  text-decoration:none;
+  padding:12px 20px;
+  border:1px solid var(--ink);
+  color:var(--ink);
+}
+.btn.primary{ background:var(--ink); color:var(--paper); }
+.btn.primary:hover{ background:var(--blue); border-color:var(--blue); }
+.btn:not(.primary):hover{ border-color:var(--blue); color:var(--blue); }
+
+/* ---------- Placeholders (images) ---------- */
+.placeholder{
+  border:1.5px dashed #B9B6AC;
+  background:var(--paper-2);
+  color:var(--ink-soft);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:18px;
+  font-size:13.5px;
+  line-height:1.5;
+}
+.placeholder .ph-title, .slideshow .ph-title{ display:block; font-weight:600; color:var(--ink); margin-bottom:3px; }
+.ph-hero{ aspect-ratio:4/3; }
+.ph-square{ aspect-ratio:1/1; }
+.ph-wide{ aspect-ratio:16/9; }
+img.ph-hero, img.ph-square, img.ph-wide{
+  width:100%; height:100%; object-fit:cover; border:1px solid var(--line);
+}
+
+/* ---------- Generic two-column utility ---------- */
+.cols{ display:flex; gap:48px; flex-wrap:wrap; }
+.cols > div{ flex:1; min-width:260px; }
+.cols h3{ font-size:15.5px; font-weight:600; margin:0 0 8px; }
+
+/* ---------- Plain list ---------- */
+ul.plain{ list-style:none; padding:0; margin:0; }
+ul.plain li{ padding-left:16px; position:relative; margin-bottom:8px; }
+ul.plain li::before{ content:"–"; position:absolute; left:0; color:var(--blue); }
+
+/* ---------- Pull quote ---------- */
+.pullquote{
+  border-left:3px solid var(--copper);
+  padding-left:20px;
+  font-size:19px;
+  font-weight:500;
+  line-height:1.5;
+  max-width:760px;
+  color:var(--ink);
+}
+
+/* ---------- Generic sections ---------- */
+section{ padding:56px 0; border-bottom:1px solid var(--line); }
+section:last-of-type{ border-bottom:none; }
+section:nth-of-type(even){ background:var(--paper-2); }
+
+/* ---------- Footer (NASA-style) ---------- */
+footer{ background:var(--ink); color:#C9CDD2; }
+footer .footer-top{ padding:60px 0 36px; }
+footer .footer-grid{ display:flex; gap:50px; flex-wrap:wrap; }
+footer .brand-col{ flex:1.6; min-width:280px; }
+footer .brand-col .fname{ font-size:32px; font-weight:700; color:#FAFAF8; line-height:1.15; margin:0 0 14px; letter-spacing:-0.01em; }
+footer .brand-col p{ color:#9199A1; max-width:380px; margin:0 0 16px; }
+footer .brand-col a.jointxt{ color:#FAFAF8; font-weight:600; text-decoration:none; }
+footer .link-col{ flex:1; min-width:160px; }
+footer .link-col .colhead{ color:#7C848C; font-size:13px; margin-bottom:14px; }
+footer .link-col a{ display:block; color:#DEE1E4; text-decoration:none; font-size:14.5px; margin-bottom:11px; }
+footer .link-col a:hover{ color:#ffffff; }
+footer hr{ border:none; border-top:1px solid #33383F; margin:0; }
+footer .footer-bottom{ padding:22px 0 40px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:13px; color:#8A9198; }
+footer .footer-bottom strong{ color:#C9CDD2; font-weight:600; }
