@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Yetrabett</title>
+<meta name="description" content="Notes on the VFCM project as it develops — modelling decisions, open questions, and progress updates.">
+<link rel="stylesheet" href="../css/site.css">
+<style>
+.post-list{ border-top:1px solid var(--line); }
+.post-item{
+  padding:28px 0;
+  border-bottom:1px solid var(--line);
+}
+.post-item .post-date{ font-size:13px; color:var(--ink-soft); margin-bottom:6px; }
+.post-item h3{ font-size:20px; font-weight:600; margin:0 0 8px; }
+.post-item h3 a{ color:var(--ink); text-decoration:none; }
+.post-item h3 a:hover{ color:var(--blue); }
+.post-item p{ color:var(--ink-soft); max-width:640px; margin:0; }
+.empty-note{ color:var(--ink-soft); padding:28px 0; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="../index.html" class="word">YETRABETT</a>
+    <div class="links">
+      <a href="../index.html">Home</a>
+      <a href="index.html">Blog</a>
+      <a href="../index.html#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header style="padding:56px 0 40px; border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head"><h2>Blog</h2></div>
+    <p class="dim" style="max-width:600px;">Notes on the Variable Frequency Conditioning Machine as the project develops — modelling decisions, open questions, and what we're learning along the way.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="post-list">
+
+      <div class="post-item">
+        <div class="post-date">Coming soon</div>
+        <h3><a href="first-post.html">Starting the Yetrabett blog</a></h3>
+        <p>A short welcome post — what this blog is for and what to expect as VFCM moves through TRL 1.</p>
+      </div>
+
+      <!--
+        To add a new post:
+        1. Copy first-post.html to a new file, e.g. second-post.html
+        2. Edit its title, date, and body content
+        3. Copy the <div class="post-item">...</div> block above,
+           paste it here, and point the link at your new file
+      -->
+
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap footer-top">
+    <div class="footer-grid">
+      <div class="brand-col">
+        <p class="fname">Yetrabett</p>
+        <p>Developing the Variable Frequency Conditioning Machine — a proposed electromechanical/hybrid pathway for AC frequency conversion and conditioning.</p>
+        <a class="jointxt" href="../index.html#about">About the project →</a>
+      </div>
+      <div class="link-col">
+        <div class="colhead">Project</div>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#architecture">Architecture</a>
+        <a href="../index.html#simulation">Interactive model</a>
+        <a href="../index.html#path">Development path</a>
+      </div>
+      <div class="link-col">
+        <div class="colhead">Business</div>
+        <a href="../index.html#applications">Applications</a>
+        <a href="../index.html#status">Grant &amp; status</a>
+      </div>
+      <div class="link-col">
+        <div class="colhead">Connect</div>
+        <a href="mailto:yetrabett@outlook.com">yetrabett@outlook.com</a>
+        <a href="https://yetrabett.github.io">yetrabett.github.io</a>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="wrap footer-bottom">
+    <span>© 2026 Yetrabett</span>
+    <span>Proposed architecture, TRL 1 — statements describe intended and explored capabilities, not validated performance, unless stated otherwise.</span>
+    <span>Grant partner: <strong>FTBI, NIT Rourkela</strong> (MeitY GENESIS EIR)</span>
+  </div>
+</footer>
+
+</body>
+</html>
