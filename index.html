@@ -5,80 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Yetrabett — Variable Frequency Conditioning Machine</title>
 <meta name="description" content="Yetrabett is developing the VFCM — a proposed electromechanical/hybrid architecture for AC frequency conversion and conditioning.">
+<link rel="stylesheet" href="css/site.css">
 <style>
 
-@font-face { font-family:'Plex Sans'; src:url('fonts/IBMPlexSans-Light.ttf'); font-weight:300; }
-@font-face { font-family:'Plex Sans'; src:url('fonts/IBMPlexSans-Regular.ttf'); font-weight:400; }
-@font-face { font-family:'Plex Sans'; src:url('fonts/IBMPlexSans-Medium.ttf'); font-weight:500; }
-@font-face { font-family:'Plex Sans'; src:url('fonts/IBMPlexSans-SemiBold.ttf'); font-weight:600; }
-@font-face { font-family:'Plex Sans'; src:url('fonts/IBMPlexSans-Bold.ttf'); font-weight:700; }
-@font-face { font-family:'Plex Mono'; src:url('fonts/IBMPlexMono-Regular.ttf'); font-weight:400; }
-@font-face { font-family:'Plex Mono'; src:url('fonts/IBMPlexMono-Medium.ttf'); font-weight:500; }
-@font-face { font-family:'Plex Mono'; src:url('fonts/IBMPlexMono-SemiBold.ttf'); font-weight:600; }
-
-:root{
-  --ink:#1B1E22;
-  --ink-soft:#4B535B;
-  --paper:#FAFAF8;
-  --paper-2:#F0EEE7;
-  --line:#D8D6CE;
-  --blue:#2D5C6E;
-  --blue-tint:#EAF0F1;
-  --copper:#A8672B;
-}
-
-*{ box-sizing:border-box; }
-html{ scroll-behavior:smooth; }
-body{
-  margin:0;
-  background:var(--paper);
-  color:var(--ink);
-  font-family:'Plex Sans', sans-serif;
-  font-size:16px;
-  line-height:1.62;
-}
-img,svg{ max-width:100%; display:block; }
-a{ color:var(--blue); }
-.wrap{
-  max-width:1180px;
-  margin:0 auto;
-  padding:0 32px;
-}
-@media (max-width:700px){ .wrap{ padding:0 20px; } }
-.mono{ font-family:'Plex Mono', monospace; }
-
-/* ---------- Nav ---------- */
-.nav{
-  border-bottom:1px solid var(--line);
-  position:sticky; top:0;
-  background:rgba(250,250,248,0.94);
-  backdrop-filter:blur(4px);
-  z-index:10;
-}
-.nav .wrap{ display:flex; align-items:center; justify-content:space-between; height:64px; }
-.nav .word{ font-weight:700; font-size:18px; letter-spacing:-0.01em; text-decoration:none; color:var(--ink); }
-.nav .links{ display:flex; }
-.nav .links a{
-  font-size:14.5px;
-  color:var(--ink-soft);
-  text-decoration:none;
-  margin-left:30px;
-}
-.nav .links a:hover{ color:var(--blue); }
-@media (max-width:760px){ .nav .links{ display:none; } }
-
-/* ---------- Section headings (no eyebrow labels) ---------- */
-.section-head{
-  border-left:3px solid var(--blue);
-  padding-left:16px;
-  margin-bottom:22px;
-}
-.section-head h2{ font-size:26px; font-weight:600; margin:0 0 6px; letter-spacing:-0.01em; }
-.section-head .note{ color:var(--ink-soft); font-size:14.5px; }
+/* Page-specific styles for the homepage only.
+   Shared base styles (fonts, nav, footer, buttons, placeholders, etc.)
+   live in css/site.css. */
 
 /* ---------- Hero ---------- */
 .hero{ padding:70px 0 48px; border-bottom:1px solid var(--line); }
-.hero .hero-grid{ display:flex; gap:56px; align-items:center; }
+.hero .hero-grid{ display:flex; gap:56px; align-items:center; flex-wrap:wrap; }
 .hero .hero-grid > div{ flex:1; min-width:280px; }
 .badge{
   display:inline-block;
@@ -87,53 +23,51 @@ a{ color:var(--blue); }
   color:var(--copper);
   border:1px solid var(--copper);
   padding:4px 10px;
-  margin-bottom:20px;
+  margin-bottom:16px;
 }
+.type-line{
+  font-family:'Plex Mono', monospace;
+  font-size:13.5px;
+  color:var(--ink-soft);
+  margin:0 0 16px;
+  min-height:20px;
+}
+.type-line .prompt{ color:var(--blue); margin-right:6px; }
+.type-line .cursor{ color:var(--blue); margin-left:1px; animation:blink 1s steps(1) infinite; }
+@keyframes blink{ 50%{ opacity:0; } }
+@media (prefers-reduced-motion: reduce){ .type-line .cursor{ animation:none; } }
 .hero h1{ font-size:44px; line-height:1.12; font-weight:700; letter-spacing:-0.015em; margin:0 0 16px; }
 .hero p.lede{ font-size:18px; color:var(--ink-soft); max-width:560px; margin:0 0 28px; }
 .hero .cta-row{ display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
-.btn{
-  display:inline-block;
-  font-size:14px;
-  font-weight:500;
-  text-decoration:none;
-  padding:12px 20px;
-  border:1px solid var(--ink);
-  color:var(--ink);
-}
-.btn.primary{ background:var(--ink); color:var(--paper); }
-.btn.primary:hover{ background:var(--blue); border-color:var(--blue); }
-.btn:not(.primary):hover{ border-color:var(--blue); color:var(--blue); }
 
-/* ---------- Placeholders (images / desmos) ---------- */
-.placeholder{
+/* ---------- Hero slideshow ---------- */
+.slideshow{
+  position:relative;
+  overflow:hidden;
   border:1.5px dashed #B9B6AC;
   background:var(--paper-2);
-  color:var(--ink-soft);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:18px;
-  font-size:13.5px;
-  line-height:1.5;
+  min-height:280px;
 }
-.placeholder .ph-title{ display:block; font-weight:600; color:var(--ink); margin-bottom:3px; }
-.ph-hero{ aspect-ratio:4/3; }
-.ph-square{ aspect-ratio:1/1; }
-.ph-wide{ aspect-ratio:16/9; }
-
-/* ---------- Generic sections ---------- */
-section{ padding:56px 0; border-bottom:1px solid var(--line); }
-section:last-of-type{ border-bottom:none; }
-.cols{ display:flex; gap:48px; flex-wrap:wrap; }
-.cols > div{ flex:1; min-width:260px; }
-.cols h3{ font-size:15.5px; font-weight:600; margin:0 0 8px; }
-p{ margin:0 0 12px; color:var(--ink); }
-.dim{ color:var(--ink-soft); }
+.slideshow .slide{
+  position:absolute; top:0; left:0; right:0; bottom:0;
+  opacity:0;
+  transition:opacity 0.7s ease;
+  display:flex; align-items:center; justify-content:center;
+  text-align:center; padding:20px;
+  color:var(--ink-soft); font-size:13.5px; line-height:1.5;
+}
+.slideshow .slide.active{ opacity:1; }
+.slideshow .slide img{ width:100%; height:100%; object-fit:cover; }
+.slide-dots{ display:flex; gap:8px; justify-content:center; margin-top:12px; }
+.slide-dots button{
+  width:8px; height:8px; border-radius:50%;
+  border:1px solid var(--ink-soft); background:transparent; padding:0;
+  cursor:pointer;
+}
+.slide-dots button.active{ background:var(--blue); border-color:var(--blue); }
 
 /* ---------- About / founder ---------- */
-.about-grid{ display:flex; gap:40px; align-items:flex-start; }
+.about-grid{ display:flex; gap:40px; align-items:flex-start; flex-wrap:wrap; }
 .about-grid > .about-photo{ flex:0 0 220px; }
 .about-grid > .about-text{ flex:1; min-width:260px; }
 
@@ -142,19 +76,8 @@ p{ margin:0 0 12px; color:var(--ink); }
 .diagram-caption{ font-size:14px; color:var(--ink-soft); max-width:680px; }
 .hardware-strip{ display:flex; gap:16px; margin-top:22px; flex-wrap:wrap; }
 .hardware-strip > div{ flex:1; min-width:160px; }
-.hardware-strip .placeholder{ aspect-ratio:4/3; margin-bottom:8px; }
+.hardware-strip img{ margin-bottom:8px; }
 .hardware-caption{ font-size:13px; color:var(--ink-soft); text-align:center; }
-
-/* ---------- Pull quote (research question) ---------- */
-.pullquote{
-  border-left:3px solid var(--copper);
-  padding-left:20px;
-  font-size:19px;
-  font-weight:500;
-  line-height:1.5;
-  max-width:760px;
-  color:var(--ink);
-}
 
 /* ---------- Development path (real sequence -> numbered) ---------- */
 .path-steps{ display:flex; gap:0; margin-top:22px; flex-wrap:wrap; }
@@ -168,14 +91,10 @@ p{ margin:0 0 12px; color:var(--ink); }
   border-top:5px solid transparent; border-bottom:5px solid transparent; border-left:7px solid var(--line);
 }
 
-/* ---------- Applications list ---------- */
-ul.plain{ list-style:none; padding:0; margin:0; }
-ul.plain li{ padding-left:16px; position:relative; margin-bottom:8px; }
-ul.plain li::before{ content:"–"; position:absolute; left:0; color:var(--blue); }
-
 /* ---------- Status strip ---------- */
 .datastrip{ display:flex; border:1px solid var(--line); flex-wrap:wrap; margin-top:20px; }
-.datastrip .cell{ flex:1; min-width:180px; padding:18px 20px; border-right:1px solid var(--line); }
+.datastrip .cell{ flex:1; min-width:180px; padding:18px 20px; border-right:1px solid var(--line); border-top:3px solid var(--blue); }
+.datastrip .cell:nth-child(2){ border-top-color:var(--copper); }
 .datastrip .cell:last-child{ border-right:none; }
 .datastrip .k{ font-size:13px; color:var(--ink-soft); margin-bottom:4px; }
 .datastrip .v{ font-size:15px; font-weight:500; }
@@ -199,22 +118,6 @@ ul.plain li::before{ content:"–"; position:absolute; left:0; color:var(--blue)
 }
 .desmos-frame .ph-title{ color:#e8e6df; font-weight:600; display:block; margin-bottom:6px; }
 
-/* ---------- Footer (NASA-style) ---------- */
-footer{ background:var(--ink); color:#C9CDD2; }
-footer .footer-top{ padding:60px 0 36px; }
-footer .footer-grid{ display:flex; gap:50px; flex-wrap:wrap; }
-footer .brand-col{ flex:1.6; min-width:280px; }
-footer .brand-col .fname{ font-size:32px; font-weight:700; color:#FAFAF8; line-height:1.15; margin:0 0 14px; letter-spacing:-0.01em; }
-footer .brand-col p{ color:#9199A1; max-width:380px; margin:0 0 16px; }
-footer .brand-col a.jointxt{ color:#FAFAF8; font-weight:600; text-decoration:none; }
-footer .link-col{ flex:1; min-width:160px; }
-footer .link-col .colhead{ color:#7C848C; font-size:13px; margin-bottom:14px; }
-footer .link-col a{ display:block; color:#DEE1E4; text-decoration:none; font-size:14.5px; margin-bottom:11px; }
-footer .link-col a:hover{ color:#ffffff; }
-footer hr{ border:none; border-top:1px solid #33383F; margin:0; }
-footer .footer-bottom{ padding:22px 0 40px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:13px; color:#8A9198; }
-footer .footer-bottom strong{ color:#C9CDD2; font-weight:600; }
-
 </style>
 </head>
 <body>
@@ -228,6 +131,7 @@ footer .footer-bottom strong{ color:#C9CDD2; font-weight:600; }
       <a href="#simulation">Model</a>
       <a href="#applications">Applications</a>
       <a href="#status">Status</a>
+      <a href="blogs/index.html">Blog</a>
       <a href="#contact">Contact</a>
     </div>
   </div>
@@ -239,6 +143,7 @@ footer .footer-bottom strong{ color:#C9CDD2; font-weight:600; }
     <div class="hero-grid">
       <div>
         <span class="badge">TRL 1 — Idea validation</span>
+        <div class="type-line"><span class="prompt">&gt;</span><span id="type-target"></span><span class="cursor">|</span></div>
         <h1>The Variable Frequency Conditioning Machine</h1>
         <p class="lede">A proposed electromechanical / hybrid architecture for AC frequency conversion and conditioning — an alternative and complementary pathway to conventional power electronics.</p>
         <div class="cta-row">
@@ -247,7 +152,16 @@ footer .footer-bottom strong{ color:#C9CDD2; font-weight:600; }
         </div>
       </div>
       <div>
-        <img class="ph-hero" src = "images/frequencies.png" alt = "Different Frequencies">
+        <div class="slideshow ph-hero" id="hero-slideshow">
+          <div class="slide active"><img src="images/hero-visual-1.jpg" alt="VFCM product render"></div>
+          <div class="slide"><img src="images/hero-visual-2.jpg" alt="VFCM drivetrain, alternate angle"></div>
+          <div class="slide"><img src="images/hero-visual-3.jpg" alt="VFCM detail shot"></div>
+        </div>
+        <div class="slide-dots" id="hero-dots">
+          <button class="active" data-i="0" aria-label="Slide 1"></button>
+          <button data-i="1" aria-label="Slide 2"></button>
+          <button data-i="2" aria-label="Slide 3"></button>
+        </div>
       </div>
     </div>
   </div>
@@ -258,7 +172,7 @@ footer .footer-bottom strong{ color:#C9CDD2; font-weight:600; }
     <div class="section-head"><h2>About Yetrabett</h2></div>
     <div class="about-grid">
       <div class="about-photo">
-        <img class="ph-square" src="images/company.png" alt="Company">
+        <img class="ph-square" src="images/founder.jpg" alt="Founder of Yetrabett">
       </div>
       <div class="about-text">
         <p>Yetrabett is exploring VFCM as a new electromechanical / hybrid approach to AC frequency conversion and conditioning. Instead of relying solely on electronic switching, the architecture combines a motor-generator arrangement with continuously variable mechanical transmission, controllable pole configuration, and closed-loop sensing.</p>
@@ -337,7 +251,7 @@ footer .footer-bottom strong{ color:#C9CDD2; font-weight:600; }
           <text x="208" y="202">Analyzer</text>
           <text x="406" y="202">Controller</text>
         </g>
-        <path d="M693,76 V198 H264" fill="none" stroke="#8a8f96" stroke-width="1.2" marker-end="url(#arrow-dim)"/>
+        <path d="M693,76 V198 H462" fill="none" stroke="#8a8f96" stroke-width="1.2" marker-end="url(#arrow-dim)"/>
         <path d="M62,76 V198 H152" fill="none" stroke="#8a8f96" stroke-width="1.2" marker-end="url(#arrow-dim)"/>
         <line x1="264" y1="198" x2="348" y2="198" stroke="#8a8f96" stroke-width="1.2" marker-end="url(#arrow-dim)"/>
         <path d="M406,176 V120 H398 V76" fill="none" stroke="#8a8f96" stroke-width="1.1" stroke-dasharray="3,3" marker-end="url(#arrow-dim)"/>
@@ -348,15 +262,15 @@ footer .footer-bottom strong{ color:#C9CDD2; font-weight:600; }
 
     <div class="hardware-strip">
       <div>
-        <img class="ph-square" src="images/motor.png" alt="Motor">
+        <img class="ph-square" src="images/motor.jpg" alt="VFCM motor">
         <div class="hardware-caption">Motor</div>
       </div>
       <div>
-        <img class="ph-square" src="images/cvt.png" alt="CVT">
+        <img class="ph-square" src="images/cvt.jpg" alt="VFCM CVT">
         <div class="hardware-caption">Continuously Variable Transmission</div>
       </div>
       <div>
-        <img class="ph-square" src="images/generator.png" alt="Generator">
+        <img class="ph-square" src="images/generator.jpg" alt="VFCM generator">
         <div class="hardware-caption">Generator</div>
       </div>
     </div>
@@ -413,6 +327,31 @@ footer .footer-bottom strong{ color:#C9CDD2; font-weight:600; }
           #fc-embed-root .fc-readout p.value{ font-family:var(--fc-mono); font-size:21px; font-weight:500; margin:0; letter-spacing:-0.01em; color:var(--fc-text); }
           #fc-embed-root .fc-wave{ background:var(--fc-panel); border:1px solid var(--fc-line); border-radius:10px; padding:6px 4px 2px; }
           #fc-embed-root .fc-footer{ margin-top:14px; font-size:11px; color:var(--fc-text-dim); line-height:1.6; }
+
+          /* ---------- Desktop: two-column layout (controls left, visual right) ---------- */
+          #fc-embed-root .fc-widget{ display:grid; grid-template-columns:1fr; grid-template-areas:"header" "stage" "hint" "controls" "readouts" "wave" "footer"; }
+          @media (min-width:900px){
+            #fc-embed-root .fc-widget{
+              max-width:960px;
+              grid-template-columns:300px 1fr;
+              column-gap:40px;
+              align-items:start;
+              grid-template-areas:
+                "header   header"
+                "controls stage"
+                "readouts stage"
+                "readouts hint"
+                ".        wave"
+                "footer   footer";
+            }
+          }
+          #fc-embed-root .fc-header{ grid-area:header; }
+          #fc-embed-root .fc-stage-wrap{ grid-area:stage; }
+          #fc-embed-root .fc-hint{ grid-area:hint; }
+          #fc-embed-root .fc-controls{ grid-area:controls; }
+          #fc-embed-root .fc-readouts{ grid-area:readouts; align-self:start; }
+          #fc-embed-root .fc-wave{ grid-area:wave; }
+          #fc-embed-root .fc-footer{ grid-area:footer; }
         </style>
 
         <div class="fc-widget">
@@ -428,7 +367,7 @@ footer .footer-bottom strong{ color:#C9CDD2; font-weight:600; }
               <input type="range" id="fc-rpm" min="750" max="3000" step="10" value="1500">
             </div>
             <div>
-              <div class="fc-control-row"><label for="fc-cvt">CVT ratio (input radius : output radius)</label><span class="val" id="fc-cvtOut">1.00 : 1</span></div>
+        <div class="fc-control-row"><label for="fc-cvt">CVT ratio (input radius : output radius)</label><span class="val" id="fc-cvtOut">1.00 : 1</span></div>
               <input type="range" id="fc-cvt" min="0.3" max="3" step="0.01" value="1">
             </div>
             <div>
@@ -452,7 +391,6 @@ footer .footer-bottom strong{ color:#C9CDD2; font-weight:600; }
     <p class="sim-panel-label">Concept model for illustration — not measured hardware data. TRL 1, pending experimental validation.</p>
   </div>
 </section>
-
 <section id="desmos">
   <div class="wrap">
     <div class="section-head"><h2>Frequency response model</h2></div>
@@ -464,7 +402,6 @@ footer .footer-bottom strong{ color:#C9CDD2; font-weight:600; }
     </div>
   </div>
 </section>
-
 <section id="path">
   <div class="wrap">
     <div class="section-head"><h2>Path from concept to validation</h2></div>
@@ -478,7 +415,6 @@ footer .footer-bottom strong{ color:#C9CDD2; font-weight:600; }
     </div>
   </div>
 </section>
-
 <section id="applications">
   <div class="wrap">
     <div class="cols">
@@ -501,7 +437,6 @@ footer .footer-bottom strong{ color:#C9CDD2; font-weight:600; }
     </div>
   </div>
 </section>
-
 <section id="status">
   <div class="wrap">
     <div class="section-head"><h2>Why this grant</h2></div>
@@ -513,7 +448,19 @@ footer .footer-bottom strong{ color:#C9CDD2; font-weight:600; }
     </div>
   </div>
 </section>
-
+<section id="blog-teaser">
+  <div class="wrap">
+    <div class="cols" style="align-items:center;">
+      <div>
+        <h3>Also read our blog</h3>
+        <p class="dim" style="margin-bottom:0;">Notes on VFCM as the project develops — modelling decisions, open questions, and what we're learning along the way.</p>
+      </div>
+      <div style="flex:0 0 auto; min-width:auto;">
+        <a class="btn" href="blogs/index.html">Visit the blog</a>
+      </div>
+    </div>
+  </div>
+</section>
 <footer id="contact">
   <div class="wrap footer-top">
     <div class="footer-grid">
@@ -548,8 +495,8 @@ footer .footer-bottom strong{ color:#C9CDD2; font-weight:600; }
     <span>Grant partner: <strong>FTBI, NIT Rourkela</strong> (MeitY GENESIS EIR)</span>
   </div>
 </footer>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="js/simulation.js"></script>
+<script src="js/dynamic.js"></script>
 </body>
 </html>
